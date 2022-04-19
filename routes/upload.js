@@ -11,6 +11,6 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/upload', upload.single('file'), fileController.addOrUpdateFile);
-router.post('/getPic', fileController.queryFile);
+// router.post('/getPic', fileController.queryFile);
 
 module.exports = router;

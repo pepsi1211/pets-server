@@ -4,11 +4,10 @@ const fs = require('fs');
 
 // 增
 let addOrUpdateFile = async (req, res) => {
-  const { uuid } = req.body;
+  // const { uuid } = req.body;
   let file = req.file;
   let type = file.originalname.substring(file.originalname.length - 3);
   let rename = `${parseTime(new Date(), '{y}-{m}-{d}')}-${Math.floor(Math.random() * (1000 - 9999 + 1)) + 9999}.${type}`;
-  console.log(req.body);
   await fs.rename(`public/uploads/${req.file.filename}`, 'public/uploads/' + rename, (err) => {
     if (err) {
       console.log(err);
@@ -16,7 +15,7 @@ let addOrUpdateFile = async (req, res) => {
     }
   });
 
-  var result = await FileModel.addOrUpdateFile(uuid, [{url: `http://47.106.185.150/uploads/${rename}`}]);
+  var result = await FileModel.addOrUpdateFile([{url: `http://47.106.185.150/uploads/${rename}`}]);
 
   if (result) {
     res.send({
@@ -32,24 +31,24 @@ let addOrUpdateFile = async (req, res) => {
   }
 }
 
-let queryFile = async(req, res)=>{
-  const { uuid } = req.body;
-  let result = await FileModel.queryFile(uuid);
-  if(result){
-    res.send({
-      code: 200,
-      data: result,
-      msg: true
-    })
-  }else{
-    res.send({
-      code: 404,
-      msg: false
-    })
-  }
-}
+// let queryFile = async(req, res)=>{
+//   const { uuid } = req.body;
+//   let result = await FileModel.queryFile(uuid);
+//   if(result){
+//     res.send({
+//       code: 200,
+//       data: result,
+//       msg: true
+//     })
+//   }else{
+//     res.send({
+//       code: 404,
+//       msg: false
+//     })
+//   }
+// }
 
 module.exports = {
   addOrUpdateFile,
-  queryFile
+  // queryFile
 }

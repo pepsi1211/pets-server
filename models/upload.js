@@ -3,14 +3,14 @@ mongoose.set('useCreateIndex', true);
 
 let FileSchema = new mongoose.Schema({
   imgList: [{ url: String }],
-  uuid: { type: String, require: true, index: { unique: true } }
+  // uuid: { type: String, require: true, index: { unique: true } }
 })
 
 
 let FileModel = mongoose.model('upload', FileSchema);
 FileModel.createIndexes();
 
-let addOrUpdateFile = (uuid, imgList) => {
+let addOrUpdateFile = (imgList) => {
   // console.log(FileModel.findOne({ uuid }));
   // if (FileModel.findOne({ uuid })) {
   //   return FileModel.updateOne({ uuid }, { imgList })
@@ -21,8 +21,7 @@ let addOrUpdateFile = (uuid, imgList) => {
   //       return false
   //     })
   // } else {
-  console.log('进来了', uuid, imgList);
-  let params = new FileModel({ uuid, imgList });
+  let params = new FileModel({ imgList });
   return params.save()
     .then(() => {
       return true;
@@ -33,9 +32,8 @@ let addOrUpdateFile = (uuid, imgList) => {
   // }
 }
 
-let queryFile = (uuid)=>{
-  console.log(uuid);
-  return FileModel.findOne({uuid})
+let queryFile = (imgList)=>{
+  return FileModel.findOne({imgList})
 }
 
 module.exports = {
