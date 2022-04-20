@@ -19,6 +19,7 @@ var categoryRouter = require("./routes/category");
 var productRouter = require("./routes/product");
 var fosterCareClientRouter = require("./routes/fosterCareClient");
 var fosterCareServerRouter = require("./routes/fosterCareServer");
+var walkServerRouter = require("./routes/walkServer");
 
 var app = express();
 
@@ -102,6 +103,7 @@ app.use("/api/admin", uploadRouter);
 app.use("/api/admin", productRouter);
 app.use("/api/client", fosterCareClientRouter);
 app.use("/api/admin", fosterCareServerRouter);
+app.use("/api/admin", walkServerRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
