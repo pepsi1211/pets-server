@@ -3,6 +3,7 @@ mongoose.set('useCreateIndex', true);
 
 let FileSchema = new mongoose.Schema({
   imgList: [{ url: String }],
+  timeStamp: {type: Date, default: new Date().getTime()}
   // uuid: { type: String, require: true, index: { unique: true } }
 })
 
