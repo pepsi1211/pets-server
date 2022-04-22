@@ -58,6 +58,7 @@ app.all("/*", (req, res, next) => {
     "/api/admin/register",
     "/api/client/addFosterCare",
     "/api/client/queryFosterCare",
+    "/api/client/queryWalk",
   ];
   if (constantRouter.includes(req.url)) {
     // 如果是注册或者登陆 直接通过,不验证token
