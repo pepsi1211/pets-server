@@ -21,6 +21,7 @@ var fosterCareClientRouter = require("./routes/fosterCareClient");
 var fosterCareServerRouter = require("./routes/fosterCareServer");
 var walkServerRouter = require("./routes/walkServer");
 var walkClientRouter = require("./routes/walkClient");
+var diaryClientRouter = require("./routes/diary");
 
 var app = express();
 
@@ -59,6 +60,8 @@ app.all("/*", (req, res, next) => {
     "/api/client/addFosterCare",
     "/api/client/queryFosterCare",
     "/api/client/queryWalk",
+    "/api/admin/upload",
+    "/api/client/queryDiary",
   ];
   if (constantRouter.includes(req.url)) {
     // 如果是注册或者登陆 直接通过,不验证token
@@ -107,6 +110,7 @@ app.use("/api/client", fosterCareClientRouter);
 app.use("/api/admin", fosterCareServerRouter);
 app.use("/api/admin", walkServerRouter);
 app.use("/api/client", walkClientRouter);
+app.use("/api/client", diaryClientRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

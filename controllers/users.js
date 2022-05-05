@@ -68,7 +68,8 @@ var login = async (req, res, next) => {
     res.send({
       code: 200,
       data: {
-        token
+        token,
+        result
       },
       msg: '登录成功'
     })

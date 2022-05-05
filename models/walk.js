@@ -30,7 +30,13 @@ let deleteWalk = (title) => {
 };
 
 let updateWalk = (data) => {
-  return WalkModel.updateOne({ id: data.id }, data);
+  let params = {
+    title: data.title,
+    subtitle: data.subtitle,
+    price: data.price,
+    pic: data.pic,
+  };
+  return WalkModel.updateOne({ _id: data._id }, params);
 };
 
 let queryWalk = (data) => {

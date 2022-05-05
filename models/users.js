@@ -6,7 +6,7 @@ let UserSchema = new mongoose.Schema({
   password: { type: String, required: true },
   phone: { type: String, require: true },
   date: { type: Date, default: Date.now() },
-  avatar: { type: String, default: 'http://47.106.185.150/default.jpg' }
+  avatar: { type: String, default: 'http://47.106.185.150/uploads/default.jpg' }
 })
 
 
